@@ -51,7 +51,7 @@ const profiles: Profile[] = [
   {
     name: "Nattadol Thongbu",
     role: "Back-end Developer",
-    image: "/images/fongt.jpg",
+    image: "/images/oat.jpg",
     about: "Oat",
     socialLinks: {
       facebook: "https://www.facebook.com/fong.f.tarathep.f.fong",
