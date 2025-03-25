@@ -13,6 +13,7 @@ import { Container } from "@/components/Container";
 // import { Faq } from "@/app/components/Faq";
 // import { Cta } from "@/app/components/Cta";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import ChatButton from "@/components/ChatButton";
 // import { benefitOne } from "@/app/components/data";
 
 export default function HomePage() {
@@ -53,6 +54,7 @@ export default function HomePage() {
           </div>
         </div>
       </Container>
+      <ChatButton />
       <AboutUsPage />
     </>
   );

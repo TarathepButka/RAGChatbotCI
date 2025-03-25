@@ -9,10 +9,8 @@ import { Disclosure } from "@headlessui/react";
 export default function Navbar() {
   const navigation = [
     { name: "Home", href: "/" },
-    { name: "About", href: "about" },
-    { name: "Services", href: "services" },
-    { name: "Contact", href: "contact" },
-    { name: "FAQ", href: "faq" },
+    { name: "About Us", href: "about" },
+    
   ];
 
   return (
@@ -20,7 +18,7 @@ export default function Navbar() {
       <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto xl:justify-between xl:px-1">
         {/* Logo */}
         <NextLink href="/">
-          <span className="flex items-center space-x-2 text-4xl font-bold text-indigo-600">
+          <span className="flex items-center space-x-2 text-4xl font-bold text-red-700 cursor-pointer">
             <span>RAGKKUCHAT</span>
           </span>
         </NextLink>
