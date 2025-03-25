@@ -25,3 +25,41 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+/* ปรับแต่ง scrollbar ทั้งหมด */
+::-webkit-scrollbar {
+  width: 8px; /* ความกว้างของ scrollbar ค่อนข้างบาง */
+  background-color: #222; /* พื้นหลังสีดำ */
+}
+
+/* ปรับแต่งตัวเลื่อน (thumb) ของ scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #555; /* สีเทาเข้ม */
+  border-radius: 4px; /* ทำให้มีความโค้งมนเล็กน้อย */
+  min-height: 30px; /* ความสูงขั้นต่ำของตัวเลื่อน */
+}
+
+/* ปรับแต่งส่วน track ของ scrollbar (พื้นหลัง) */
+::-webkit-scrollbar-track {
+  background-color: #222; /* พื้นหลังสีดำ */
+}
+
+/* ปรับแต่งปุ่มลูกศรบน */
+::-webkit-scrollbar-button:start:decrement {
+  height: 12px;
+  background-color: #222;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='6' viewBox='0 0 12 6'%3E%3Cpath d='M6 0l6 6H0z' fill='%23555'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ปรับแต่งปุ่มลูกศรล่าง */
+::-webkit-scrollbar-button:end:increment {
+  height: 12px;
+  background-color: #222;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='6' viewBox='0 0 12 6'%3E%3Cpath d='M6 6l6-6H0z' fill='%23555'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}

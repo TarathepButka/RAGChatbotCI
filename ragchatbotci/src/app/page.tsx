@@ -37,7 +37,7 @@ export default function HomePage() {
                   className="px-8 py-4 text-lg font-medium text-center text-white bg-red-800 rounded-md cursor-pointer"
                   onClick={() => router.push("/chat")}
                 >
-                  Get Started
+                  Start now
                 </a>
               </div>
             </div>
