@@ -2,7 +2,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function Home() {
+export default function Chat() {
   const [userInput, setUserInput] = useState("");
   const [response, setResponse] = useState("");
 
