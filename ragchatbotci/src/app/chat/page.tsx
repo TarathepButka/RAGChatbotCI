@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { Search, Loader2 } from "lucide-react";
-import Navbar from "@/components/Navbar";
+import Navbarchat from "@/components/Navbarchat";
 
 // กำหนด Type สำหรับ props ของ SearchInput component
 type SearchInputProps = {
@@ -133,7 +133,7 @@ export default function ChatPage() {
           isScrolled ? "border-b-2 border-white" : ""
         }`}
       >
-        <Navbar />
+        <Navbarchat />
       </div>
 
       {/* Main container */}
