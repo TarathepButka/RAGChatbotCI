@@ -3,14 +3,12 @@
 import React from "react";
 import NextLink from "next/link";
 import { Link as ScrollLink } from "react-scroll";
-import { useRouter, usePathname } from "next/navigation";
 import { Disclosure } from "@headlessui/react";
 
 export default function Navbar() {
   const navigation = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "about" },
-    
   ];
 
   return (
@@ -107,7 +105,6 @@ export default function Navbar() {
             ))}
           </ul>
         </div>
-        
       </nav>
     </div>
   );
