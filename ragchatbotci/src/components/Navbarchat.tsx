@@ -9,7 +9,7 @@ export default function Navbarchat() {
       <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto xl:justify-between xl:px-1">
         {/* Logo */}
         <NextLink href="/">
-          <span className="flex items-center ml-6 space-x-2 text-4xl font-bold text-red-700 cursor-pointer">
+          <span className="flex items-center space-x-2 text-4xl font-bold text-blue-600 cursor-pointer">
             <span>RAGKKUCHAT</span>
           </span>
         </NextLink>
