@@ -1,8 +1,18 @@
 import { useState } from "react";
-import { MessageCircle } from "lucide-react";
-
+import { MessageCircle, Send } from "lucide-react";
+import { useRouter } from "next/navigation";
 const ChatButton = () => {
   const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState("");
+  const router = useRouter(); 
+
+  // ฟังก์ชันส่งข้อความ
+  const handleSubmit = () => {
+    if (message.trim() !== "") {
+      router.push(`/chat?message=${encodeURIComponent(message)}`);
+      setMessage(""); 
+    }
+  };
 
   return (
     <>
@@ -23,14 +33,27 @@ const ChatButton = () => {
               ✖
             </button>
           </div>
+
           <div className="p-3 text-sm text-gray-200">
             Welcome to RAG! How can we help?
           </div>
-          <input
-            type="text"
-            placeholder="Type a message..."
-            className="w-full border rounded-md p-2 mt-2 text-gray-300"
-          />
+
+          <div className="flex items-center border rounded-md p-2 mt-2 bg-gray-600">
+            <input
+              type="text"
+              placeholder="Type a message..."
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+              className="w-full text-white placeholder:text-gray-200 outline-none bg-transparent"
+            />
+            <button
+              onClick={handleSubmit}
+              className="ml-2 text-blue-400 hover:text-blue-500"
+            >
+              <Send size={20} />
+            </button>
+          </div>
         </div>
       )}
     </>

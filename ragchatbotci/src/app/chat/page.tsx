@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Search, Loader2 } from "lucide-react";
 import Navbarchat from "@/components/Navbarchat";
+import { useSearchParams } from "next/navigation";
 
 // กำหนด Type สำหรับ props ของ SearchInput component
 type SearchInputProps = {
@@ -57,6 +58,7 @@ export default function ChatPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [hasInteracted, setHasInteracted] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const searchParams = useSearchParams();
 
   // คำนวณความสูงของ input bar สำหรับการเพิ่ม padding
   const inputBarHeight: number = 72; // ประมาณความสูงของ input bar (รวม padding)
@@ -79,8 +81,21 @@ export default function ChatPage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleSearch = async (): Promise<void> => {
-    if (!input.trim()) return;
+  // Check for message parameter in URL when component mounts
+  useEffect(() => {
+    const messageParam = searchParams.get("message");
+    if (messageParam) {
+      setInput(messageParam);
+      // Set timeout to allow the input to be set before triggering search
+      setTimeout(() => {
+        handleSearch(messageParam);
+      }, 100);
+    }
+  }, [searchParams]); // Only run when searchParams changes
+
+  const handleSearch = async (customInput?: string): Promise<void> => {
+    const textToProcess = customInput || input;
+    if (!textToProcess.trim()) return;
 
     // Set hasInteracted to true on first interaction
     if (!hasInteracted) {
@@ -88,21 +103,23 @@ export default function ChatPage() {
     }
 
     // Add user message to messages
-    const newMessages: Message[] = [...messages, { user: input, bot: "" }];
+    const newMessages: Message[] = [
+      ...messages,
+      { user: textToProcess, bot: "" },
+    ];
     setMessages(newMessages);
 
     // Reset input and set loading
-    const currentInput: string = input;
     setInput("");
     setLoading(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/ask", {
+      const res = await fetch("", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ question: currentInput }),
+        body: JSON.stringify({ question: textToProcess }),
       });
       const data: { reply: string } = await res.json();
 
@@ -152,7 +169,7 @@ export default function ChatPage() {
                   <SearchInput
                     input={input}
                     setInput={setInput}
-                    handleSearch={handleSearch}
+                    handleSearch={() => handleSearch()}
                     loading={loading}
                   />
                 </div>
@@ -213,7 +230,7 @@ export default function ChatPage() {
             <SearchInput
               input={input}
               setInput={setInput}
-              handleSearch={handleSearch}
+              handleSearch={() => handleSearch()}
               loading={loading}
             />
           </div>

@@ -69,7 +69,7 @@ const profiles: Profile[] = [
 
 export default function AboutUsPage() {
   return (
-    <div>
+    <div id="team">
       <h1 className="text-4xl font-bold leading-snug tracking-tight lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight bg-gradient-to-r from-[#c621e5] to-[#7d7cf9] inline-block text-transparent bg-clip-text text-center w-full">
         Developer Team
       </h1>

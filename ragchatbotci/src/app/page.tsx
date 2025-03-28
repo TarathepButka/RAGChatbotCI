@@ -51,7 +51,7 @@ export default function HomePage() {
         </div>
       </Container>
       <Container>
-        <div className="w-full flex justify-center">
+        <div id="services" className="w-full flex justify-center">
           <h1 className="text-center w-full text-2xl font-semibold leading-snug tracking-tight lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight bg-gradient-to-r from-[#f34a62] via-[#bb77ed] to-[#1cdce8] inline-block text-transparent bg-clip-text">
             AI Assistant for Engineering <br />
             at Khon Kaen University
@@ -78,8 +78,8 @@ export default function HomePage() {
           </section>
         </div>
       </Container>
-      <Container>
-        <div className="mx-16 mb-4 items-center p-2 rounded-4xl border border-gray-600">
+      <Container >
+        <div id="about" className="mx-16 mb-4 items-center p-2 rounded-4xl border border-gray-600">
           <p className="text-white text-lg mx-4">About</p>
         </div>
         <div className="flex justify-between gap-6 mx-16">
@@ -111,7 +111,7 @@ export default function HomePage() {
           />
         </div>
       </Container>
-      <Container>
+      <Container >
         <AboutUsPage />
       </Container>
       <ChatButton />
