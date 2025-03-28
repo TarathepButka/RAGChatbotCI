@@ -112,7 +112,7 @@ export default function HomePage() {
         </div>
       </Container>
       <Container>
-      <div id="about" className="w-full flex justify-center">
+        <div id="about" className="w-full flex justify-center">
           <h1 className="text-center w-full text-2xl font-semibold leading-snug tracking-tight lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight bg-gradient-to-r from-[#40c9ff] to-[#e81cff] inline-block text-transparent bg-clip-text">
             About
           </h1>
@@ -138,18 +138,22 @@ export default function HomePage() {
         </div>
         <div className="relative w-[1024px] h-[576px] mx-auto mb-4 my-6">
           <Image
-            src={"/images/en.jpg"}
-            alt={`en`}
-            layout="fill"
-            objectFit="cover"
-            className="rounded-2xl"
+            src="/images/en.jpg"
+            alt="en"
+            fill
+            className="rounded-2xl object-cover"
           />
         </div>
       </Container>
-      <Container >
+      <Container>
         <AboutUsPage />
       </Container>
-      <ChatButton />
+
+      {/* Position the ChatButton with a higher z-index than the Footer */}
+      <div className="relative">
+        <ChatButton />
+      </div>
+
       <Footer />
     </>
   );

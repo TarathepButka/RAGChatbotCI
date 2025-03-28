@@ -4,13 +4,13 @@ import { useRouter } from "next/navigation";
 const ChatButton = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
-  const router = useRouter(); 
+  const router = useRouter();
 
   // ฟังก์ชันส่งข้อความ
   const handleSubmit = () => {
     if (message.trim() !== "") {
       router.push(`/chat?message=${encodeURIComponent(message)}`);
-      setMessage(""); 
+      setMessage("");
     }
   };
 
@@ -19,7 +19,7 @@ const ChatButton = () => {
       {/* Floating Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 bg-red-800 text-white p-4 rounded-full shadow-lg flex items-center justify-center hover:bg-red-900 transition cursor-pointer"
+        className="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center hover:bg-blue-600 transition cursor-pointer"
       >
         <MessageCircle size={24} />
       </button>

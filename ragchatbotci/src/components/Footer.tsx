@@ -1,5 +1,12 @@
+import { Link as ScrollLink } from "react-scroll";
 
 export default function Footer() {
+  const footernavigation = [
+    { name: "Home", href: "home" },
+    { name: "Services", href: "services" },
+    { name: "About", href: "about" },
+    { name: "Our Team", href: "team" },
+  ];
   return (
     <footer className="bg-[#29292f] text-white py-6">
       <div className="container mx-auto flex flex-wrap justify-between items-center px-6">
@@ -15,30 +22,35 @@ export default function Footer() {
 
         {/* Center: Quick Links */}
         <div className="w-full md:w-1/3 text-center mb-4 md:mb-0">
-          <nav>
-            <ul className="flex justify-center space-x-4 text-sm">
-              <li>
-                <a href="#" className="hover:underline">
-                  Home
-                </a>
+          <ul className="flex justify-center space-x-1 text-sm font-medium">
+            {footernavigation.map((item) => (
+              <li key={item.name}>
+                {item.href === "home" ? (
+                  <ScrollLink
+                    to={item.href}
+                    smooth={true}
+                    duration={800}
+                    spy={true}
+                    offset={-300}
+                    className="block py-2 px-3 text-gray-200 hover:text-blue-500 cursor-pointer underline"
+                  >
+                    {item.name}
+                  </ScrollLink>
+                ) : (
+                  <ScrollLink
+                    to={item.href}
+                    smooth={true}
+                    duration={800}
+                    spy={true}
+                    offset={-120}
+                    className="block py-2 px-3 text-gray-300 hover:text-blue-500 cursor-pointer underline"
+                  >
+                    {item.name}
+                  </ScrollLink>
+                )}
               </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Service
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Our Team
-                </a>
-              </li>
-            </ul>
-          </nav>
+            ))}
+          </ul>
         </div>
 
         {/* Right: Contact & Social Media */}
