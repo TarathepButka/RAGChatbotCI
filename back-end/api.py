@@ -8,18 +8,19 @@ app = FastAPI()
 
 # Allow all origins for testing (you can change this to specific origins)
 origins = [
-    "http://localhost",  # Local development
-    "http://localhost:3000",  # If you are using a frontend on port 3000 (e.g., React)
-    "http://127.0.0.1",  # Localhost
+    "http://localhost",
+    "http://localhost:3000",
+    "http://127.0.0.1",
+    ""
 ]
 
 # Add CORSMiddleware to handle OPTIONS requests and CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # You can specify specific origins here
+    allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
-    allow_headers=["*"],  # Allow all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Define request model
@@ -28,7 +29,7 @@ class Query(BaseModel):
 
 @app.post("/ask")
 def receive_query(query: Query):
-    # Change from query.message to query.question
+    # ✅ ใช้ query.question ให้ตรงกับ Model
     return {"reply": f"{qd.query_rag(query.question)}"}
 
 # Run the API
