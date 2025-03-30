@@ -3,6 +3,7 @@ import { useState, useRef, useEffect, useCallback, Suspense } from "react";
 import { Search, Loader2 } from "lucide-react";
 import Navbarchat from "@/components/Navbarchat";
 import { useSearchParams } from "next/navigation";
+import Image from "next/image";
 
 type SearchInputProps = {
   input: string;
@@ -91,14 +92,17 @@ export default function ChatPage() {
       const newMessages: Message[] = [
         ...messages,
         { user: textToProcess, bot: "" },
+
+        
       ];
+      
       setMessages(newMessages);
 
       setInput("");
       setLoading(true);
 
       try {
-        const res = await fetch("", {
+        const res = await fetch("https://ragci-backend.onrender.com/ask", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ question: textToProcess }),
@@ -115,7 +119,10 @@ export default function ChatPage() {
         setMessages(
           newMessages.map((msg, index) =>
             index === newMessages.length - 1
-              ? { ...msg, bot: "ขออภัยผมไม่สามารถให้คำตอบได้ มีเรื่องอื่นที่อยากทราบไหมครับ" }
+              ? {
+                  ...msg,
+                  bot: "ขออภัยผมไม่สามารถให้คำตอบได้ มีเรื่องอื่นที่อยากทราบไหมครับ",
+                }
               : msg
           )
         );
@@ -166,14 +173,40 @@ export default function ChatPage() {
                         (loading && index === messages.length - 1)) && (
                         <div className="text-left">
                           <div className="inline-block bg-[#40404a] p-2 rounded-lg max-w-[80%] text-gray-200 whitespace-pre-wrap break-words">
-                            {msg.bot || (
-                              <div className="flex items-center">
-                                <Loader2
-                                  className="animate-spin mr-2"
-                                  size={16}
+                            {msg.bot ===
+                            "Here is the image related to your query: ค่าธรรมเนียมการศึกษา.png" ? (
+                              <div>
+                                {/* Display the image for ค่าธรรมเนียมการศึกษา.png */}
+                                <Image
+                                  width={256}
+                                  height={256}
+                                  src={"/images/ค่าธรรมเนียมการศึกษา.png"}
+                                  alt="Query Image"
+                                  className="max-w-full h-auto"
                                 />
-                                Answering...
                               </div>
+                            ) : msg.bot ===
+                              "Here is the image related to your query: ช่องทางติดต่อ.png" ? (
+                              <div>
+                                {/* Display the image for ช่องทางติดต่อ.png */}
+                                <Image
+                                  width={256}
+                                  height={256}
+                                  src={"/images/ช่องทางติดต่อ.png"}
+                                  alt="Query Image"
+                                  className="max-w-full h-auto"
+                                />
+                              </div>
+                            ) : (
+                              msg.bot || (
+                                <div className="flex items-center">
+                                  <Loader2
+                                    className="animate-spin mr-2"
+                                    size={16}
+                                  />
+                                  Answering...
+                                </div>
+                              )
                             )}
                           </div>
                         </div>

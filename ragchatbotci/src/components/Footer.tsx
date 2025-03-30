@@ -61,7 +61,7 @@ export default function Footer() {
               href="mailto:support@chatbot-kku.ac.th"
               className="text-blue-400 hover:underline"
             >
-              support@chatbot-kku.ac.th
+              reg@kku.ac.th
             </a>
           </p>
           <p className="text-sm mt-1">
