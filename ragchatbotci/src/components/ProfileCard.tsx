@@ -21,7 +21,6 @@ type ProfileCardProps = {
 export default function ProfileCard({ profile }: ProfileCardProps) {
   const { name, role, image, socialLinks } = profile;
   const [mounted, setMounted] = useState(false);
-  const { theme } = useTheme();
 
   useEffect(() => setMounted(true), []);
 

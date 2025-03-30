@@ -66,7 +66,7 @@ export default function HomePage() {
                 className="text-white text-xl bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-800 font-medium rounded-lg text- px-6 py-3 text-center cursor-pointer"
                 onClick={() => router.push("/chat")}
               >
-                Let's Chat
+                Let&apos;s Chat
               </button>
             </div>
           </div>

@@ -83,7 +83,6 @@ export default function ChatPage() {
   const inputRef = useRef<HTMLDivElement>(null);
   const [inputHeight, setInputHeight] = useState<number>(72);
   const searchParams = useSearchParams();
-  const [hasInteracted, setHasInteracted] = useState<boolean>(false);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -105,11 +104,6 @@ export default function ChatPage() {
     }
   }, [searchParams]);
 
-  // Function to format text with proper line breaks
-  const formatMessageText = (text: string) => {
-    return text.trim().replace(/\n/g, "<br />");
-  };
-
   const handleSearch = async (customInput?: string): Promise<void> => {
     const textToProcess = customInput || input;
     if (!textToProcess.trim()) return;
@@ -122,7 +116,6 @@ export default function ChatPage() {
 
     setInput("");
     setLoading(true);
-    setHasInteracted(true);
 
     try {
       const res = await fetch("", {
