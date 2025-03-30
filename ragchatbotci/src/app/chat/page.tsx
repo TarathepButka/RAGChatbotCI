@@ -92,17 +92,15 @@ export default function ChatPage() {
       const newMessages: Message[] = [
         ...messages,
         { user: textToProcess, bot: "" },
-
-        
       ];
-      
+
       setMessages(newMessages);
 
       setInput("");
       setLoading(true);
 
       try {
-        const res = await fetch("https://ragci-backend.onrender.com/ask", {
+        const res = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ question: textToProcess }),
