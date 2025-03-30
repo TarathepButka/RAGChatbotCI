@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { FaFacebookF, FaGithub } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
 
 type Profile = {
   name: string;
